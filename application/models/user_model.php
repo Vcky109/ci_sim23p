@@ -10,10 +10,17 @@ class User_model extends CI_Model {
 
     // Fungsi untuk registrasi user baru
     public function register($data){
-        // Hash password sebelum disimpan
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         
-        // Insert data ke tabel user
-        return $this->insert_user($data);  // Panggil fungsi insert_user untuk menyimpan data user
+        return $this->insert_user($data);  
+    }
+    public function check_user($username, $password){
+        $this->db->where('username', $username);
+        $user = $this->db->get('user')->row();
+
+        if($user && password_verify($password, $user->password)){
+            return $user;
+        }
+        return false;
     }
 }
