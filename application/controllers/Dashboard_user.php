@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Dashboard_user extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -11,8 +11,8 @@ class Dashboard extends CI_Controller {
             redirect('auth/login');
         }
 
-        // Cek apakah role pengguna adalah admin
-        if ($this->session->userdata('role') !== 'admin') {
+        // Cek apakah role pengguna adalah user
+        if ($this->session->userdata('role') !== 'user') {
             redirect('auth/login');
         }
 
@@ -23,9 +23,9 @@ class Dashboard extends CI_Controller {
     }
 
     public function index() {
-        // Halaman dashboard admin
+        // Halaman dashboard user
         $this->load->view('templates/header');
-        $this->load->view('dashboard');
+        $this->load->view('Dashboard_user');
         $this->load->view('templates/footer');
     }
 }

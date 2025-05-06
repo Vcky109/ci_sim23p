@@ -52,8 +52,9 @@
       </form>
 
       <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
+        <a href="<?= site_url('auth/register') ?>" class="text-center">Register akun baru</a>
       </p>
+
     </div>
     <!-- /.login-card-body -->
   </div>
